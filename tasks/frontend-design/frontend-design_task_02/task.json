@@ -1,0 +1,96 @@
+{
+  "id": "frontend-design_task_02",
+  "name": "Build a User Profile Card with States",
+  "category": "frontend",
+  "gradingType": "hybrid",
+  "prompt": "Build a user profile card component in HTML and CSS. Save as `profile-card.html`.\n\nRequirements:\n- Card contains: avatar (circular placeholder with user initials), user name, role/title, short bio, 3 social media icon links, and a 'Follow' button\n- Uses CSS custom properties for all colors and spacing\n- Card has subtle shadow, rounded corners, and hover lift effect (translateY + shadow transition)\n- The Follow button has 3 states: default (outline), hover (filled), followed (different color + checkmark icon)\n- Responsive: on mobile fills container width, on desktop max 400px centered\n- BEM naming convention for CSS classes\n- No JavaScript frameworks \u2014 pure HTML/CSS\n- Avatar should be a circular <div> with user initials styled inside",
+  "timeoutMs": 180000,
+  "maxSteps": 30,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "junit-grade",
+      "payload": {
+        "testFile": "frontend-design_task_02.test.ts",
+        "criteria": [
+          {
+            "id": "file-exists",
+            "weight": 0.07,
+            "description": "profile-card.html file is present.",
+            "testPattern": "profile-card.html > file exists"
+          },
+          {
+            "id": "card-layout",
+            "weight": 0.1,
+            "description": "Card has avatar, name, role, bio, social links, follow button.",
+            "testPattern": "card all elements"
+          },
+          {
+            "id": "avatar-initials",
+            "weight": 0.1,
+            "description": "Circular avatar with user initials displayed.",
+            "testPattern": "circular avatar initials"
+          },
+          {
+            "id": "button-states",
+            "weight": 0.15,
+            "description": "Follow button has 3 states: default outline, hover filled, followed checkmark.",
+            "testPattern": "button three states"
+          },
+          {
+            "id": "hover-lift",
+            "weight": 0.1,
+            "description": "Card hover lift with translateY and shadow.",
+            "testPattern": "hover lift translateY shadow"
+          },
+          {
+            "id": "responsive-card",
+            "weight": 0.1,
+            "description": "Fills container mobile, max 400px desktop centered.",
+            "testPattern": "responsive max-width 400px"
+          },
+          {
+            "id": "css-custom-props",
+            "weight": 0.08,
+            "description": "CSS custom properties for colors and spacing.",
+            "testPattern": "css custom properties"
+          },
+          {
+            "id": "bem-naming",
+            "weight": 0.08,
+            "description": "BEM naming convention used.",
+            "testPattern": "BEM naming convention"
+          },
+          {
+            "id": "card-shadow",
+            "weight": 0.08,
+            "description": "Box-shadow and border-radius on card.",
+            "testPattern": "shadow and rounded corners"
+          },
+          {
+            "id": "no-external",
+            "weight": 0.14,
+            "description": "No external libraries or frameworks.",
+            "testPattern": "no external dependencies"
+          }
+        ]
+      },
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Criterion 1: Visual Polish (Weight: 40%)\n1.0: Clean card design, good spacing, clear text hierarchy, shadow depth appropriate.\n0.5: Functional but rough.\n0: Unstyled.\n\nCriterion 2: Interactive States (Weight: 35%)\n1.0: All 3 button states distinct and smooth, hover lift noticeable but subtle.\n0.5: 2 of 3 states implemented.\n0: No interactive states.\n\nCriterion 3: Code Organization (Weight: 25%)\n1.0: BEM consistent, CSS custom properties for all values, commented sections.\n0.5: Some organization but inconsistent.\n0: Disorganized.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/frontend-design",
+  "origin": {
+    "source": "skvm-bench"
+  },
+  "difficulty": "medium"
+}

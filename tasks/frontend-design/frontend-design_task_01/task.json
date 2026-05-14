@@ -1,0 +1,31 @@
+{
+  "id": "frontend-design_task_01",
+  "name": "Build a Responsive Navigation Bar",
+  "category": "frontend",
+  "gradingType": "hybrid",
+  "prompt": "Build a responsive navigation bar component in HTML and CSS. Save the result as `navbar.html`.\n\nRequirements:\n- Desktop: horizontal nav with logo on left, 4 links (Home, About, Services, Contact) on right\n- Mobile (<768px): hamburger menu icon that toggles the nav links into a vertical stacked layout\n- Active/hover states on all links\n- Semantic HTML (<nav>, <ul>, <a>)\n- The nav should be sticky at the top of the page\n- Use CSS custom properties for colors and spacing\n- Include a visible focus indicator for keyboard users\n- No JavaScript frameworks or libraries \u2014 vanilla HTML/CSS only",
+  "timeoutMs": 180000,
+  "maxSteps": 30,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "python-grade",
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Criterion 1: Visual Design (Weight: 40%)\n1.0: Clean professional design with proper spacing, good contrast, smooth transitions.\n0.5: Functional but visually rough.\n0: Unstyled or looks broken.\n\nCriterion 2: Mobile Navigation (Weight: 35%)\n1.0: Hamburger clearly identifiable, toggle works smoothly, menu stacks with adequate spacing.\n0.5: Hamburger present but toggle incomplete.\n0: No mobile behavior.\n\nCriterion 3: Code Quality (Weight: 25%)\n1.0: Well-organized CSS, proper indentation, BEM or consistent naming, no unused styles.\n0.5: Messy but functional.\n0: Disorganized.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/frontend-design",
+  "origin": {
+    "source": "skvm-bench"
+  },
+  "difficulty": "easy"
+}

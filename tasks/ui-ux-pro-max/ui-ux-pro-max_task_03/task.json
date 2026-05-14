@@ -1,0 +1,29 @@
+{
+  "id": "ui-ux-pro-max_task_03",
+  "name": "Redesign a Poorly Performing Onboarding Flow",
+  "category": "ux",
+  "gradingType": "hybrid",
+  "prompt": "A SaaS product has a 4-step onboarding flow with a 30% drop-off rate at step 3. Analyze the problems and redesign the flow. Save as `onboarding-redesign.md`.\n\n**Current Flow:**\n\nStep 1: \"Welcome! Tell us about yourself\"\n- Full name, job title, company size, industry (4 fields, all required)\n- Progress bar shows 4 steps\n- Next button at bottom\n\nStep 2: \"What brings you here?\"\n- 8 checkbox options (analytics, reporting, team management, integrations, automation, customer support, billing, security)\n- User must select at least 3 to proceed\n- \"Skip\" link in small gray text at very bottom\n\nStep 3: \"Connect your tools\"\n- 10 integration options shown as logos\n- User must connect at least 2 integrations to proceed\n- Each integration requires OAuth login in a popup window\n- No \"Do this later\" option — user must do it now\n- This is where 30% of users drop off\n\nStep 4: \"You're all set!\"\n- Dashboard tour video (3 minutes)\n- \"Get Started\" button appears only after video finishes\n- Video auto-plays with sound on\n\nYour redesign must include:\n1. **Problem analysis**: For each step, identify the UX issues (at least 3 total)\n2. **Redesigned flow**: New step-by-step flow with changes explained\n3. **Key metrics**: How the redesign would be measured (e.g., completion rate, time per step)\n4. **One specific A/B test**: Propose a test to validate the biggest change\n\nUse UX principles from the skill: cognitive load, user control, progressive disclosure, and the core rules.",
+  "timeoutMs": 180000,
+  "maxSteps": 30,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "python-grade",
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Criterion 1: Problem analysis (Weight: 30%)\n1.0: At least 3 specific UX issues identified with clear rationale. Issues correctly reference UX principles (cognitive load, user control, progressive disclosure, etc.).\n0.5: 1-2 issues identified.\n0: No meaningful analysis.\n\nCriterion 2: Redesign quality (Weight: 35%)\n1.0: Redesigned flow addresses each identified issue. Specific changes described (e.g., reduce required integrations, allow skip, split step 3). Step count reduced or improved.\n0.5: Redesign present but vague or doesn't address root causes.\n0: No redesign.\n\nCriterion 3: Metrics and A/B test (Weight: 20%)\n1.0: Measurable metrics proposed (completion rate, time to complete, satisfaction score). Specific A/B test design with control vs variant, sample size consideration, and success criteria.\n0.5: Metrics or test present but vague.\n0: Missing.\n\nCriterion 4: Format and structure (Weight: 15%)\n1.0: Well-organized document with clear sections. Professional UX audit format.\n0.5: Functional but messy.\n0: Disorganized.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/ui-ux-pro-max",
+  "origin": {"source": "skvm-bench"},
+  "difficulty": "medium"
+}

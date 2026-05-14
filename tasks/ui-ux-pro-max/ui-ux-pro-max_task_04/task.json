@@ -1,0 +1,29 @@
+{
+  "id": "ui-ux-pro-max_task_04",
+  "name": "Design a Complete Mobile App UI with States",
+  "category": "ux",
+  "gradingType": "hybrid",
+  "prompt": "Design a mobile task management app interface. Generate an HTML prototype showing 3 key screens with all states. Save as `task-app.html`.\n\n**Screen 1: Task List (Home)**\n- Header with app name and profile avatar\n- Section title \"Today's Tasks\" with count\n- 3 sample task cards, each showing: checkbox, task title, due time, priority badge (High=red, Medium=yellow, Low=green)\n- Floating action button (+) at bottom right\n- Empty state when all tasks are done: illustration placeholder + \"All caught up!\" message + \"Create task\" button\n\n**Screen 2: New Task Form**\n- Title input, description textarea, due date picker, priority selector (3 buttons)\n- Real-time validation: title required (red border if empty on submit)\n- Save and Cancel buttons\n- Success toast message after saving: \"Task created!\" with checkmark\n\n**Screen 3: Task Detail**\n- Full task details view\n- Mark as complete toggle with satisfying animation\n- Delete button with confirmation dialog\n- Edit button that opens the form in edit mode\n\n**States to include (in hidden divs, shown via JS):**\n1. Loading state (skeleton cards)\n2. Error state (\"Couldn't load tasks\" with retry button)\n3. Empty state (all tasks done)\n4. Success toast (after creating task)\n5. Confirmation dialog (before deleting)\n\n**Styling:**\n- Mobile-first, max-width 420px centered\n- Clean modern design with accent color #6366f1 (indigo)\n- Smooth transitions and hover states\n- CSS custom properties\n\n**JS requirements:**\n- Toggle task completion (checkbox)\n- Show/hide new task form\n- Show/hide task detail view\n- Show empty state when no active tasks\n- Show success toast temporarily\n- Show delete confirmation dialog\n- Form validation (title required)\n- Filter: show all / active / completed tabs\n\nNo external libraries. Vanilla HTML/CSS/JS. Single self-contained file.",
+  "timeoutMs": 300000,
+  "maxSteps": 50,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "python-grade",
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Context: The agent was asked to build a mobile task app prototype with multiple states.\n\nCriterion 1: File and structure (Weight: 15%)\n1.0: task-app.html exists. Single self-contained file. Mobile viewport (max-width 420px). Clean HTML structure.\n0.5: File exists but has issues.\n0: Missing.\n\nCriterion 2: Screen completeness (Weight: 25%)\n1.0: All 3 screens present (task list, new task form, task detail). Each has proper layout, task cards with badges, form fields, detail view. Navigation between screens works.\n0.5: 2 of 3 screens present or incomplete.\n0: Less than 2 screens.\n\nCriterion 3: States (Weight: 25%)\n1.0: All 5 states implemented (loading skeleton, error with retry, empty state, success toast, delete confirmation). States are visually distinct and functional.\n0.5: 3-4 states implemented.\n0: Less than 3 states.\n\nCriterion 4: Interactivity (Weight: 20%)\n1.0: Task completion toggle works. Form validation prevents empty title. Toast appears and auto-dismisses. Delete confirmation shows. Filter tabs work (all/active/completed).\n0.5: Some interactivity missing.\n0: No JS or broken.\n\nCriterion 5: Visual design (Weight: 15%)\n1.0: Clean mobile UI, consistent spacing, proper touch targets (44px+), good color contrast, smooth transitions. Indigo accent. Looks like a real app.\n0.5: Functional but rough.\n0: Minimal styling.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/ui-ux-pro-max",
+  "origin": {"source": "skvm-bench"},
+  "difficulty": "hard"
+}

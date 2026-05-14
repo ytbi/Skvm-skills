@@ -1,0 +1,96 @@
+{
+  "id": "frontend-design_task_03",
+  "name": "Build a Landing Page Hero with Form",
+  "category": "frontend",
+  "gradingType": "hybrid",
+  "prompt": "Build a landing page hero section with a signup form in HTML and CSS. Save as `hero.html`.\n\nLayout:\n- Full-viewport-height hero with dark gradient background (#1e3a8a to #7c3aed)\n- Left side: h1 headline 'Build Better Products Faster', subheading, 3 feature bullets with emoji icons\n- Right side: signup card (white bg) with email input, password input, CTA button\n- Mobile (<768px): form stacks below content\n\nStyling:\n- White text on dark gradient\n- Signup card: white, shadow, rounded\n- Input focus styles with colored border transition\n- CTA button: #f59e0b accent, hover darkens\n- :invalid pseudo-class for error states (red border)\n\nAccessibility:\n- Semantic <form> with labels, aria attributes\n- Proper label associations\n\nNo JS, no libraries, pure HTML/CSS.",
+  "timeoutMs": 180000,
+  "maxSteps": 30,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "junit-grade",
+      "payload": {
+        "testFile": "frontend-design_task_03.test.ts",
+        "criteria": [
+          {
+            "id": "file-exists",
+            "weight": 0.07,
+            "description": "hero.html file exists.",
+            "testPattern": "hero.html > file exists"
+          },
+          {
+            "id": "gradient-bg",
+            "weight": 0.1,
+            "description": "Dark blue-to-purple gradient background.",
+            "testPattern": "gradient background"
+          },
+          {
+            "id": "hero-layout",
+            "weight": 0.13,
+            "description": "Desktop left content + right form card layout.",
+            "testPattern": "two-column hero layout"
+          },
+          {
+            "id": "form-card",
+            "weight": 0.1,
+            "description": "White signup card with shadow and rounded corners.",
+            "testPattern": "form card shadow rounded"
+          },
+          {
+            "id": "form-fields",
+            "weight": 0.1,
+            "description": "Email input, password input, CTA button.",
+            "testPattern": "email password submit form"
+          },
+          {
+            "id": "input-focus",
+            "weight": 0.08,
+            "description": "Input focus with colored border transition.",
+            "testPattern": "focus border transition"
+          },
+          {
+            "id": "invalid-states",
+            "weight": 0.1,
+            "description": "Red border on :invalid inputs.",
+            "testPattern": "invalid pseudo-class red border"
+          },
+          {
+            "id": "responsive",
+            "weight": 0.1,
+            "description": "Mobile stacks form below content.",
+            "testPattern": "mobile stack layout"
+          },
+          {
+            "id": "form-a11y",
+            "weight": 0.08,
+            "description": "Labels associated with inputs, semantic form.",
+            "testPattern": "form labels accessibility"
+          },
+          {
+            "id": "no-external",
+            "weight": 0.14,
+            "description": "No external libraries.",
+            "testPattern": "no external dependencies"
+          }
+        ]
+      },
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Criterion 1: Visual Impact (Weight: 40%)\n1.0: Professional landing page feel, gradient looks good, typography clear, form card stands out.\n0.5: Functional but visually flat.\n0: Unstyled or broken.\n\nCriterion 2: Form UX (Weight: 35%)\n1.0: Clearly labeled, meaningful placeholders, prominent CTA, visible error states.\n0.5: Form works but UX rough.\n0: Form unusable.\n\nCriterion 3: Responsive (Weight: 25%)\n1.0: Mobile reflows naturally, text readable, no overflow.\n0.5: Works but issues at some viewports.\n0: Broken on mobile.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/frontend-design",
+  "origin": {
+    "source": "skvm-bench"
+  },
+  "difficulty": "medium"
+}

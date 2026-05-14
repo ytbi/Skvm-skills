@@ -1,0 +1,29 @@
+{
+  "id": "ui-ux-pro-max_task_02",
+  "name": "Design a Mobile Checkout User Flow",
+  "category": "ux",
+  "gradingType": "hybrid",
+  "prompt": "Design a mobile checkout user flow for an e-commerce app. Save the result as `checkout-flow.md`.\n\nThe app sells digital products (e-books, templates, software licenses). Users browse on mobile, add items to cart, and check out.\n\nDesign the flow covering:\n1. **Cart review** — User sees items, prices, total; can adjust quantity or remove items\n2. **Checkout** — User enters or confirms email, applies coupon code, sees final total\n3. **Payment** — User enters card details; support Apple Pay and Google Pay shortcuts\n4. **Confirmation** — Order success screen with download link and email confirmation notice\n\nFor each step, include:\n- **Screen layout**: Describe the layout (top to bottom) in 3-5 bullet points\n- **User goals**: What the user wants to accomplish at this step\n- **States**: Default, loading, empty (where applicable), error, success\n- **Microcopy**: Key button labels, error messages, and confirmation text per the microcopy guidelines\n- **Accessibility**: 1-2 accessibility considerations for this step\n\nAlso include:\n- **Total step count**: How many screens/taps from cart to confirmation\n- **Optimization suggestions**: 2-3 ways to reduce friction or increase conversion\n\nFormat as a structured markdown document.",
+  "timeoutMs": 180000,
+  "maxSteps": 30,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "python-grade",
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Criterion 1: File exists (Weight: 15%)\n1.0: checkout-flow.md exists with structured content.\n0.5: File exists but minimal.\n0: Missing.\n\nCriterion 2: Flow completeness (Weight: 30%)\n1.0: All 4 steps covered (cart, checkout, payment, confirmation). Each has layout, user goals, states, microcopy, and accessibility considerations.\n0.5: 2-3 steps covered or some missing sections.\n0: Less than 2 steps.\n\nCriterion 3: States and microcopy (Weight: 25%)\n1.0: Multiple states described per step (default, loading, error, empty, success). Microcopy follows guidelines (helpful, concise, specific). Payment step mentions Apple Pay/Google Pay.\n0.5: States or microcopy present but limited.\n0: Missing.\n\nCriterion 4: Optimization and summary (Weight: 30%)\n1.0: Step count calculated. 2-3 meaningful optimization suggestions (e.g., reduce fields, add social login, save payment method). Suggestions have clear rationale.\n0.5: Suggestions present but generic.\n0: Missing.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/ui-ux-pro-max",
+  "origin": {"source": "skvm-bench"},
+  "difficulty": "medium"
+}

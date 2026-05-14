@@ -1,0 +1,31 @@
+{
+  "id": "frontend-design_task_05",
+  "name": "Build a Multi-Step Checkout Flow",
+  "category": "frontend",
+  "gradingType": "hybrid",
+  "prompt": "Build a multi-step checkout page in HTML, CSS, and vanilla JavaScript. Save as `checkout.html`.\n\n**Step 1: Cart Review**\n- 3 sample items with name, quantity, price, line total\n- Quantity +/- buttons update totals in real-time\n- Empty state when all quantities = 0\n\n**Step 2: Shipping**\n- Fields: Full Name, Email, Address, City, ZIP, Country\n- Real-time validation: email format, ZIP 5 digits, all required\n- Inline error messages, green/red borders on valid/invalid\n\n**Step 3: Payment**\n- Card Number (4-4-4-4 formatting), Expiry (MM/YY auto /), CVV (3 digits)\n- Card brand detection (Visa/MC/Amex) from first digit\n\n**Navigation**\n- Step indicator with current/completed states\n- Back/Next buttons\n- Cannot advance with validation errors\n- Final step Place Order shows success modal\n\n**Success modal**\n- Overlay + card with checkmark, order number, confirmation\n- Continue Shopping button closes it\n\n**Styling**\n- Clean modern design, accent #2563eb, responsive\n- CSS custom properties, transitions\n- No libraries, vanilla only",
+  "timeoutMs": 300000,
+  "maxSteps": 50,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "python-grade",
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Criterion 1: UX and Flow (Weight: 35%)\n1.0: Natural step transitions, clear progress, helpful error messages. Feels like real checkout.\n0.5: Steps work but UX rough.\n0: Navigation confusing.\n\nCriterion 2: Form Logic (Weight: 35%)\n1.0: All validation rules work, card formatting smooth, totals recalculate instantly.\n0.5: Most logic works but edge cases missed.\n0: Logic broken.\n\nCriterion 3: Visual Design (Weight: 30%)\n1.0: Clean modern checkout, clear progress indicator, well-contained form, celebratory modal.\n0.5: Functional but basic.\n0: Minimal styling.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/frontend-design",
+  "origin": {
+    "source": "skvm-bench"
+  },
+  "difficulty": "hard"
+}
