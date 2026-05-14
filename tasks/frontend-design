@@ -1,0 +1,352 @@
+[
+  {
+    "id": "frontend-design_task_01",
+    "name": "Build a Responsive Navigation Bar",
+    "category": "frontend",
+    "gradingType": "hybrid",
+    "prompt": "Build a responsive navigation bar component in HTML and CSS. Save the result as `navbar.html`.\n\nRequirements:\n- Desktop: horizontal nav with logo on left, 4 links (Home, About, Services, Contact) on right\n- Mobile (<768px): hamburger menu icon that toggles the nav links into a vertical stacked layout\n- Active/hover states on all links\n- Semantic HTML (<nav>, <ul>, <a>)\n- The nav should be sticky at the top of the page\n- Use CSS custom properties for colors and spacing\n- Include a visible focus indicator for keyboard users\n- No JavaScript frameworks or libraries — vanilla HTML/CSS only",
+    "timeoutMs": 180000,
+    "maxSteps": 30,
+    "eval": [
+      {
+        "method": "custom",
+        "evaluatorId": "python-grade",
+        "id": "custom-0",
+        "name": "Automated Grade",
+        "weight": 0.7
+      },
+      {
+        "method": "llm-judge",
+        "rubric": "Criterion 1: Visual Design (Weight: 40%)\n1.0: Clean professional design with proper spacing, good contrast, smooth transitions.\n0.5: Functional but visually rough.\n0: Unstyled or looks broken.\n\nCriterion 2: Mobile Navigation (Weight: 35%)\n1.0: Hamburger clearly identifiable, toggle works smoothly, menu stacks with adequate spacing.\n0.5: Hamburger present but toggle incomplete.\n0: No mobile behavior.\n\nCriterion 3: Code Quality (Weight: 25%)\n1.0: Well-organized CSS, proper indentation, BEM or consistent naming, no unused styles.\n0.5: Messy but functional.\n0: Disorganized.",
+        "maxScore": 1,
+        "id": "llm-judge-1",
+        "name": "Quality Judge",
+        "weight": 0.3
+      }
+    ],
+    "skill": "../../skills/frontend-design",
+    "origin": {
+      "source": "skvm-bench"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-design_task_02",
+    "name": "Build a User Profile Card with States",
+    "category": "frontend",
+    "gradingType": "hybrid",
+    "prompt": "Build a user profile card component in HTML and CSS. Save as `profile-card.html`.\n\nRequirements:\n- Card contains: avatar (circular placeholder with user initials), user name, role/title, short bio, 3 social media icon links, and a 'Follow' button\n- Uses CSS custom properties for all colors and spacing\n- Card has subtle shadow, rounded corners, and hover lift effect (translateY + shadow transition)\n- The Follow button has 3 states: default (outline), hover (filled), followed (different color + checkmark icon)\n- Responsive: on mobile fills container width, on desktop max 400px centered\n- BEM naming convention for CSS classes\n- No JavaScript frameworks — pure HTML/CSS\n- Avatar should be a circular <div> with user initials styled inside",
+    "timeoutMs": 180000,
+    "maxSteps": 30,
+    "eval": [
+      {
+        "method": "custom",
+        "evaluatorId": "junit-grade",
+        "payload": {
+          "testFile": "frontend-design_task_02.test.ts",
+          "criteria": [
+            {
+              "id": "file-exists",
+              "weight": 0.07,
+              "description": "profile-card.html file is present.",
+              "testPattern": "profile-card.html > file exists"
+            },
+            {
+              "id": "card-layout",
+              "weight": 0.1,
+              "description": "Card has avatar, name, role, bio, social links, follow button.",
+              "testPattern": "card all elements"
+            },
+            {
+              "id": "avatar-initials",
+              "weight": 0.1,
+              "description": "Circular avatar with user initials displayed.",
+              "testPattern": "circular avatar initials"
+            },
+            {
+              "id": "button-states",
+              "weight": 0.15,
+              "description": "Follow button has 3 states: default outline, hover filled, followed checkmark.",
+              "testPattern": "button three states"
+            },
+            {
+              "id": "hover-lift",
+              "weight": 0.1,
+              "description": "Card hover lift with translateY and shadow.",
+              "testPattern": "hover lift translateY shadow"
+            },
+            {
+              "id": "responsive-card",
+              "weight": 0.1,
+              "description": "Fills container mobile, max 400px desktop centered.",
+              "testPattern": "responsive max-width 400px"
+            },
+            {
+              "id": "css-custom-props",
+              "weight": 0.08,
+              "description": "CSS custom properties for colors and spacing.",
+              "testPattern": "css custom properties"
+            },
+            {
+              "id": "bem-naming",
+              "weight": 0.08,
+              "description": "BEM naming convention used.",
+              "testPattern": "BEM naming convention"
+            },
+            {
+              "id": "card-shadow",
+              "weight": 0.08,
+              "description": "Box-shadow and border-radius on card.",
+              "testPattern": "shadow and rounded corners"
+            },
+            {
+              "id": "no-external",
+              "weight": 0.14,
+              "description": "No external libraries or frameworks.",
+              "testPattern": "no external dependencies"
+            }
+          ]
+        },
+        "id": "custom-0",
+        "name": "Automated Grade",
+        "weight": 0.7
+      },
+      {
+        "method": "llm-judge",
+        "rubric": "Criterion 1: Visual Polish (Weight: 40%)\n1.0: Clean card design, good spacing, clear text hierarchy, shadow depth appropriate.\n0.5: Functional but rough.\n0: Unstyled.\n\nCriterion 2: Interactive States (Weight: 35%)\n1.0: All 3 button states distinct and smooth, hover lift noticeable but subtle.\n0.5: 2 of 3 states implemented.\n0: No interactive states.\n\nCriterion 3: Code Organization (Weight: 25%)\n1.0: BEM consistent, CSS custom properties for all values, commented sections.\n0.5: Some organization but inconsistent.\n0: Disorganized.",
+        "maxScore": 1,
+        "id": "llm-judge-1",
+        "name": "Quality Judge",
+        "weight": 0.3
+      }
+    ],
+    "skill": "../../skills/frontend-design",
+    "origin": {
+      "source": "skvm-bench"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-design_task_03",
+    "name": "Build a Landing Page Hero with Form",
+    "category": "frontend",
+    "gradingType": "hybrid",
+    "prompt": "Build a landing page hero section with a signup form in HTML and CSS. Save as `hero.html`.\n\nLayout:\n- Full-viewport-height hero with dark gradient background (#1e3a8a to #7c3aed)\n- Left side: h1 headline 'Build Better Products Faster', subheading, 3 feature bullets with emoji icons\n- Right side: signup card (white bg) with email input, password input, CTA button\n- Mobile (<768px): form stacks below content\n\nStyling:\n- White text on dark gradient\n- Signup card: white, shadow, rounded\n- Input focus styles with colored border transition\n- CTA button: #f59e0b accent, hover darkens\n- :invalid pseudo-class for error states (red border)\n\nAccessibility:\n- Semantic <form> with labels, aria attributes\n- Proper label associations\n\nNo JS, no libraries, pure HTML/CSS.",
+    "timeoutMs": 180000,
+    "maxSteps": 30,
+    "eval": [
+      {
+        "method": "custom",
+        "evaluatorId": "junit-grade",
+        "payload": {
+          "testFile": "frontend-design_task_03.test.ts",
+          "criteria": [
+            {
+              "id": "file-exists",
+              "weight": 0.07,
+              "description": "hero.html file exists.",
+              "testPattern": "hero.html > file exists"
+            },
+            {
+              "id": "gradient-bg",
+              "weight": 0.1,
+              "description": "Dark blue-to-purple gradient background.",
+              "testPattern": "gradient background"
+            },
+            {
+              "id": "hero-layout",
+              "weight": 0.13,
+              "description": "Desktop left content + right form card layout.",
+              "testPattern": "two-column hero layout"
+            },
+            {
+              "id": "form-card",
+              "weight": 0.1,
+              "description": "White signup card with shadow and rounded corners.",
+              "testPattern": "form card shadow rounded"
+            },
+            {
+              "id": "form-fields",
+              "weight": 0.1,
+              "description": "Email input, password input, CTA button.",
+              "testPattern": "email password submit form"
+            },
+            {
+              "id": "input-focus",
+              "weight": 0.08,
+              "description": "Input focus with colored border transition.",
+              "testPattern": "focus border transition"
+            },
+            {
+              "id": "invalid-states",
+              "weight": 0.1,
+              "description": "Red border on :invalid inputs.",
+              "testPattern": "invalid pseudo-class red border"
+            },
+            {
+              "id": "responsive",
+              "weight": 0.1,
+              "description": "Mobile stacks form below content.",
+              "testPattern": "mobile stack layout"
+            },
+            {
+              "id": "form-a11y",
+              "weight": 0.08,
+              "description": "Labels associated with inputs, semantic form.",
+              "testPattern": "form labels accessibility"
+            },
+            {
+              "id": "no-external",
+              "weight": 0.14,
+              "description": "No external libraries.",
+              "testPattern": "no external dependencies"
+            }
+          ]
+        },
+        "id": "custom-0",
+        "name": "Automated Grade",
+        "weight": 0.7
+      },
+      {
+        "method": "llm-judge",
+        "rubric": "Criterion 1: Visual Impact (Weight: 40%)\n1.0: Professional landing page feel, gradient looks good, typography clear, form card stands out.\n0.5: Functional but visually flat.\n0: Unstyled or broken.\n\nCriterion 2: Form UX (Weight: 35%)\n1.0: Clearly labeled, meaningful placeholders, prominent CTA, visible error states.\n0.5: Form works but UX rough.\n0: Form unusable.\n\nCriterion 3: Responsive (Weight: 25%)\n1.0: Mobile reflows naturally, text readable, no overflow.\n0.5: Works but issues at some viewports.\n0: Broken on mobile.",
+        "maxScore": 1,
+        "id": "llm-judge-1",
+        "name": "Quality Judge",
+        "weight": 0.3
+      }
+    ],
+    "skill": "../../skills/frontend-design",
+    "origin": {
+      "source": "skvm-bench"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-design_task_04",
+    "name": "Build a Data Table with Sort and Empty State",
+    "category": "frontend",
+    "gradingType": "hybrid",
+    "prompt": "Build a data table component with HTML, CSS, and vanilla JavaScript. Save as `data-table.html`.\n\nData (5 rows): name, role, department, status, email.\n\nRequirements:\n- Proper <table> with <thead>, <tbody>, <th scope=\"col\">\n- Column sorting: click header to sort ASC (▲), again DESC (▼), third click reset\n- Status badges: Active=green, On Leave=yellow, Inactive=gray\n- Empty state: \"Clear data\" button hides table, shows icon + \"No data found\" + reset button\n- Mobile <640px: table becomes card layout\n- Sortable headers use <button> inside <th> for accessibility\n- Focus indicators visible\n\nNo external libraries. Pure HTML/CSS/JS.",
+    "timeoutMs": 300000,
+    "maxSteps": 50,
+    "eval": [
+      {
+        "method": "custom",
+        "evaluatorId": "junit-grade",
+        "payload": {
+          "testFile": "frontend-design_task_04.test.ts",
+          "criteria": [
+            {
+              "id": "file-exists",
+              "weight": 0.06,
+              "description": "data-table.html file exists.",
+              "testPattern": "data-table.html > file exists"
+            },
+            {
+              "id": "table-structure",
+              "weight": 0.09,
+              "description": "Proper table with thead, tbody, th scope=col.",
+              "testPattern": "proper table structure"
+            },
+            {
+              "id": "data-rows",
+              "weight": 0.09,
+              "description": "Renders 5 data rows from the provided array.",
+              "testPattern": "renders 5 data rows"
+            },
+            {
+              "id": "column-sorting",
+              "weight": 0.18,
+              "description": "ASC/DESC/reset three-state sorting with indicators.",
+              "testPattern": "three-state column sorting"
+            },
+            {
+              "id": "status-badges",
+              "weight": 0.1,
+              "description": "Colored badges: green Active, yellow On Leave, gray Inactive.",
+              "testPattern": "status badges colored"
+            },
+            {
+              "id": "sort-accessibility",
+              "weight": 0.08,
+              "description": "Button elements inside th for keyboard accessibility.",
+              "testPattern": "button inside th sorting"
+            },
+            {
+              "id": "empty-state",
+              "weight": 0.14,
+              "description": "Clear/reset buttons, icon + heading + description empty state.",
+              "testPattern": "empty state with reset"
+            },
+            {
+              "id": "mobile-card",
+              "weight": 0.1,
+              "description": "Cards layout at <640px instead of table columns.",
+              "testPattern": "mobile card layout"
+            },
+            {
+              "id": "focus-indicators",
+              "weight": 0.07,
+              "description": "Visible focus on all interactive elements.",
+              "testPattern": "visible focus indicators"
+            },
+            {
+              "id": "no-external",
+              "weight": 0.09,
+              "description": "No external libraries, vanilla JS.",
+              "testPattern": "no external dependencies"
+            }
+          ]
+        },
+        "id": "custom-0",
+        "name": "Automated Grade",
+        "weight": 0.7
+      },
+      {
+        "method": "llm-judge",
+        "rubric": "Criterion 1: Interactivity (Weight: 35%)\n1.0: Sorting works on all columns, indicators clear, toggle cycles correctly. Clear/Reset work instantly.\n0.5: Sorting works but incomplete.\n0: Sorting broken.\n\nCriterion 2: Visual Design (Weight: 35%)\n1.0: Alternating row colors/hover highlights. Status badges clear. Mobile card layout looks intentional.\n0.5: Functional but rough.\n0: Minimal styling.\n\nCriterion 3: Empty State (Weight: 30%)\n1.0: Visually appealing empty state with icon, clear message, obvious action. Smooth transition.\n0.5: Empty exists but plain.\n0: Missing.",
+        "maxScore": 1,
+        "id": "llm-judge-1",
+        "name": "Quality Judge",
+        "weight": 0.3
+      }
+    ],
+    "skill": "../../skills/frontend-design",
+    "origin": {
+      "source": "skvm-bench"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-design_task_05",
+    "name": "Build a Multi-Step Checkout Flow",
+    "category": "frontend",
+    "gradingType": "hybrid",
+    "prompt": "Build a multi-step checkout page in HTML, CSS, and vanilla JavaScript. Save as `checkout.html`.\n\n**Step 1: Cart Review**\n- 3 sample items with name, quantity, price, line total\n- Quantity +/- buttons update totals in real-time\n- Empty state when all quantities = 0\n\n**Step 2: Shipping**\n- Fields: Full Name, Email, Address, City, ZIP, Country\n- Real-time validation: email format, ZIP 5 digits, all required\n- Inline error messages, green/red borders on valid/invalid\n\n**Step 3: Payment**\n- Card Number (4-4-4-4 formatting), Expiry (MM/YY auto /), CVV (3 digits)\n- Card brand detection (Visa/MC/Amex) from first digit\n\n**Navigation**\n- Step indicator with current/completed states\n- Back/Next buttons\n- Cannot advance with validation errors\n- Final step Place Order shows success modal\n\n**Success modal**\n- Overlay + card with checkmark, order number, confirmation\n- Continue Shopping button closes it\n\n**Styling**\n- Clean modern design, accent #2563eb, responsive\n- CSS custom properties, transitions\n- No libraries, vanilla only",
+    "timeoutMs": 300000,
+    "maxSteps": 50,
+    "eval": [
+      {
+        "method": "custom",
+        "evaluatorId": "python-grade",
+        "id": "custom-0",
+        "name": "Automated Grade",
+        "weight": 0.7
+      },
+      {
+        "method": "llm-judge",
+        "rubric": "Criterion 1: UX and Flow (Weight: 35%)\n1.0: Natural step transitions, clear progress, helpful error messages. Feels like real checkout.\n0.5: Steps work but UX rough.\n0: Navigation confusing.\n\nCriterion 2: Form Logic (Weight: 35%)\n1.0: All validation rules work, card formatting smooth, totals recalculate instantly.\n0.5: Most logic works but edge cases missed.\n0: Logic broken.\n\nCriterion 3: Visual Design (Weight: 30%)\n1.0: Clean modern checkout, clear progress indicator, well-contained form, celebratory modal.\n0.5: Functional but basic.\n0: Minimal styling.",
+        "maxScore": 1,
+        "id": "llm-judge-1",
+        "name": "Quality Judge",
+        "weight": 0.3
+      }
+    ],
+    "skill": "../../skills/frontend-design",
+    "origin": {
+      "source": "skvm-bench"
+    },
+    "difficulty": "hard"
+  }
+]
