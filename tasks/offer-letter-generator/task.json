@@ -1,0 +1,31 @@
+{
+  "id": "offer-letter-generator",
+  "name": "Fill an Offer Letter DOCX Template",
+  "category": "document_generation",
+  "gradingType": "hybrid",
+  "prompt": "You are given two input files in the current working directory:\n\n1. `offer_letter_template.docx`\n2. `employee_data.json`\n\nYour task is to generate a completed Word document named `offer_letter_filled.docx` by filling the template with the employee information.\n\nRequirements:\n- Replace all placeholders such as `{{CANDIDATE_FULL_NAME}}` and `{{POSITION}}` using the provided JSON data.\n- The template may contain a conditional block in this form:\n  `{{IF_RELOCATION}} ... {{END_IF_RELOCATION}}`\n  Keep the block only if `RELOCATION_PACKAGE` is `Yes`; otherwise remove the entire block.\n- Remove all template control markers from the final document.\n- Preserve the document as a valid `.docx` file.\n- Create a second file named `fill_report.json` with this exact top-level shape:\n\n{\n  \"report\": {\n    \"output_file\": \"offer_letter_filled.docx\",\n    \"placeholders_resolved\": true,\n    \"conditional_blocks_handled\": true,\n    \"docx_valid\": true\n  }\n}\n\nDo not include extra top-level keys. The report must describe the actual output you generated.",
+  "timeoutMs": 300000,
+  "maxSteps": 40,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "python-grade",
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Context: The agent was asked to fill a DOCX offer-letter template using employee_data.json and output `offer_letter_filled.docx` plus `fill_report.json`.\n\nCriterion 1: Artifact completeness (Weight: 35%)\n1.0: Both required files exist and the output document is a valid `.docx` file.\n0.5: Files exist but the document is corrupt or the report is malformed.\n0: Required files are missing.\n\nCriterion 2: Template filling correctness (Weight: 45%)\n1.0: Placeholders are resolved, conditional relocation content is handled correctly, and obvious template markers are absent in the final output.\n0.5: Most content is filled but some placeholders or markers remain.\n0: The document is largely unfilled or incorrect.\n\nCriterion 3: Workflow discipline (Weight: 20%)\n1.0: The output reflects a template-aware document filling workflow with a faithful report.\n0.5: Partially correct but loosely aligned.\n0: The output does not resemble a proper template fill workflow.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/docx",
+  "origin": {
+    "source": "skillsbench"
+  },
+  "difficulty": "easy"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "fix-visual-stability",
+  "name": "Fix Visual Stability Issues in a Next.js App",
+  "category": "web_performance",
+  "gradingType": "hybrid",
+  "prompt": "A Next.js e-commerce application is provided in the `app/` directory in the current working directory. Users experience visual instability, including layout shifts and poor perceived smoothness.\n\nYour task is to inspect the application, identify the root causes of the visual stability issues, and fix them.\n\nHard constraints:\n- Do not break existing functionality.\n- Do not change existing class names.\n- Do not change existing ids.\n- Do not change existing `data-testid` values.\n\nRequired outputs:\n1. Apply the code fixes directly in the application files under `app/`.\n2. Create a report file named `visual-stability-report.md` in the current working directory.\n\nThe report must include:\n- the likely root causes you found\n- which files/components were changed\n- what was changed to improve stability\n- a short statement that class names, ids, and data-testid values were preserved\n\nTreat this as a frontend engineering repair task, not a design brainstorm.",
+  "timeoutMs": 300000,
+  "maxSteps": 50,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "python-grade",
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Context: The agent was asked to fix visual stability issues in a Next.js app under `app/`, without changing class names, ids, or data-testid values, and to produce `visual-stability-report.md`.\n\nCriterion 1: Task completion (Weight: 35%)\n1.0: The agent inspects the app, makes targeted changes under `app/`, and creates the report file.\n0.5: The report exists but code changes are unclear or incomplete.\n0: No meaningful repair work was performed.\n\nCriterion 2: Root-cause reasoning (Weight: 35%)\n1.0: The report identifies plausible frontend causes of visual instability (layout shift, late-loading dimensions, unstable mounts, etc.) and ties changes to those causes.\n0.5: The report mentions generic UI issues but not concrete stability causes.\n0: No real diagnosis is present.\n\nCriterion 3: Constraint discipline (Weight: 30%)\n1.0: The report explicitly states preservation of class names, ids, and data-testid values, and the changes appear careful rather than destructive.\n0.5: Constraints are mentioned weakly or only partially respected.\n0: The work appears to ignore the task constraints.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/web-interface-guidelines",
+  "origin": {
+    "source": "skillsbench"
+  },
+  "difficulty": "hard"
+}

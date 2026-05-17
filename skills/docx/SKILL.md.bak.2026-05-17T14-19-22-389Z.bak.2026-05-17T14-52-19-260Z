@@ -1,0 +1,74 @@
+---
+name: docx
+description: Fill, edit, and validate Word `.docx` templates with placeholder replacement, conditional sections, and structure-preserving document updates. Use for template-based letters, forms, reports, and generated business documents.
+triggers:
+  - fill docx template
+  - generate word document
+  - replace placeholders in docx
+  - offer letter template
+  - conditional docx section
+origin:
+  source: skillsbench
+  source_url: https://www.skillsbench.ai/skills
+---
+
+# DOCX Template Filling
+
+Generate valid `.docx` documents from templates while preserving document structure and correctly resolving placeholders and conditional content.
+
+## Workflow
+
+When working with a DOCX template:
+
+1. Inspect the template inputs first
+2. Inventory placeholders and control markers
+3. Map each placeholder to the provided data source
+4. Apply conditional logic exactly as requested
+5. Remove control markers from the final document
+6. Validate the generated `.docx` before submission
+
+## Core Rules
+
+### 1. Preserve `.docx` structure
+
+- The output must remain a valid `.docx` file
+- Do not substitute a plain text or markdown document in place of the Word file
+- Preserve the template's document structure wherever possible
+
+### 2. Resolve placeholders completely
+
+- Every placeholder that has corresponding data should be replaced
+- Do not leave `{{...}}` markers behind in the final output
+- Do not partially fill a template and call it complete
+
+### 3. Handle conditional sections exactly
+
+- If the template uses explicit control blocks such as:
+  `{{IF_RELOCATION}} ... {{END_IF_RELOCATION}}`
+  then follow the condition exactly
+- Keep the section only when the condition is satisfied
+- Remove both the control markers and any excluded block content when the condition is not satisfied
+
+### 4. Keep workflow truthful
+
+- The report/validation artifact must reflect the actual output file
+- Do not claim placeholders were resolved unless they are actually gone from the final document
+
+## Pre-Submit Checklist
+
+Before final submission, verify:
+
+- the `.docx` file exists
+- the `.docx` file is still structurally valid
+- all expected placeholders have been replaced
+- control markers are absent
+- conditional sections are included or excluded correctly
+- the report file matches the actual generated output
+
+## Common Failure Modes
+
+- Returning the wrong file type
+- Leaving unresolved placeholders in the document XML
+- Removing content that should have been conditionally preserved
+- Keeping template control markers in the final output
+- Generating a report that claims success while the document still contains unresolved markers

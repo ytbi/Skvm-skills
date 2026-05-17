@@ -1,0 +1,3 @@
+- Verify that the `.docx` file is manipulated as a valid DOCX package; do not write pseudo-binary content directly.
+- Reopen the saved output to confirm it is indeed a valid .docx/ZIP container, ensuring it can be opened without errors.
+- Confirm that the document XML inside is readable and that all placeholders and control markers are handled appropriately before finalizing the report.

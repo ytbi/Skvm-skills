@@ -1,0 +1,31 @@
+{
+  "id": "xlsx-recover-data",
+  "name": "Recover Missing Values in an Excel Workbook",
+  "category": "spreadsheet_repair",
+  "gradingType": "hybrid",
+  "prompt": "You are given an Excel workbook named `nasa_budget_incomplete.xlsx` in the current working directory. Several cells in the workbook contain the placeholder value `???`, representing missing numeric values.\n\nYour task is to recover the missing values by analyzing the workbook's existing data and internal consistency. Replace every `???` with the correct numeric value and save the repaired workbook as `nasa_budget_recovered.xlsx` in the current working directory.\n\nRequirements:\n- The output must remain a valid Excel workbook (`.xlsx`).\n- Preserve the existing workbook structure, sheet names, and non-missing values.\n- Replace missing values only where needed.\n- Do not create a CSV or text export instead of the Excel file.\n- After repairing the workbook, create a file named `recovery_report.json` with this exact top-level shape:\n\n{\n  \"report\": {\n    \"output_file\": \"nasa_budget_recovered.xlsx\",\n    \"all_missing_cells_filled\": true,\n    \"workbook_valid\": true\n  }\n}\n\nDo not include extra top-level keys. The report must reflect the actual output you generated.",
+  "timeoutMs": 300000,
+  "maxSteps": 40,
+  "eval": [
+    {
+      "method": "custom",
+      "evaluatorId": "python-grade",
+      "id": "custom-0",
+      "name": "Automated Grade",
+      "weight": 0.7
+    },
+    {
+      "method": "llm-judge",
+      "rubric": "Context: The agent was asked to repair an Excel workbook with missing values marked as `???` and save the result as `nasa_budget_recovered.xlsx`, plus a `recovery_report.json` file.\n\nCriterion 1: Artifact correctness (Weight: 40%)\n1.0: `nasa_budget_recovered.xlsx` exists, is a valid `.xlsx` workbook, and preserves the workbook structure instead of producing the wrong format. `recovery_report.json` also exists and is valid JSON.\n0.5: Output files exist but the workbook is corrupt or the report is malformed.\n0: Required files are missing.\n\nCriterion 2: Recovery quality (Weight: 40%)\n1.0: Missing cells have been replaced with plausible numeric values derived from workbook context, and no obvious placeholder values remain.\n0.5: Some values are filled but at least one missing placeholder remains or some values appear inconsistent.\n0: The workbook is largely unrepaired.\n\nCriterion 3: Repair discipline (Weight: 20%)\n1.0: The agent behaves like a workbook repair workflow rather than a free-form summary generator, preserving structure and producing a faithful repair report.\n0.5: The output is partially correct but the workflow is noisy or loosely aligned.\n0: The agent does not perform a real repair workflow.",
+      "maxScore": 1,
+      "id": "llm-judge-1",
+      "name": "Quality Judge",
+      "weight": 0.3
+    }
+  ],
+  "skill": "../../skills/data-reconciliation",
+  "origin": {
+    "source": "skillsbench"
+  },
+  "difficulty": "medium"
+}
